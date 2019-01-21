@@ -1,0 +1,17 @@
+[github]
+    user = gegen07
+
+[user]
+    name = Germano Barcelos
+    email = gegenbarcelos@gmail.com
+
+[core]
+    editor = "vim"
+    trustctime = false
+	excludesfile = ~/.config/git/ignore
+
+[color]
+    ui = true
+    diff = auto
+    status = auto
+    branch = auto

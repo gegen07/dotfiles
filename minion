@@ -1,0 +1,5 @@
+file_roots:
+  base:
+    - ./states/base
+  debian:
+    - ./states/debian
