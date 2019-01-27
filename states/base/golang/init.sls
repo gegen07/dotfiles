@@ -1,4 +1,4 @@
-{% set golang_version = 'go1.11.4' %}
+{% set golang_version = 'go1.11.2' %}
 {% set golang_distribution = 'linux' %}
 
 include:
@@ -6,7 +6,7 @@ include:
 
 golang-directory:
   file.directory:
-    - name: {{ grains.homedir }}/dev/projects/gocode
+    - name: /mnt/c/Users/gegen/Documents/dev/go/ 
     - user: {{ grains.user }}
     - makedirs: True
 
