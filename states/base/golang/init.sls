@@ -6,7 +6,7 @@ include:
 
 golang-directory:
   file.directory:
-    - name: /mnt/c/Users/gegen/Documents/dev/go/ 
+    - name: {{ grains.homedir }}/dev/gocode
     - user: {{ grains.user }}
     - makedirs: True
 

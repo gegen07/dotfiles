@@ -3,10 +3,9 @@ export PATH="/usr/local/bin:$PATH"
 
 # Dev
 export PROJECTS="$HOME/dev/projects"
-export WIN_PROJECTS="/mnt/c/Users/gegen/Documents/dev"
 # Go env
-export PATH="$PATH:$WIN_PROJECTS/go/bin"
-export GOPATH="$WIN_PROJECTS/go"
+export PATH="$PATH:$PROJECTS/gocode/bin"
+export GOPATH="$PROJECTS/gocode"
 
 # Clang
 export CC=clang
