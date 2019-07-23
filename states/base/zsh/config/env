@@ -8,8 +8,8 @@ export PATH="$PATH:$PROJECTS/gocode/bin"
 export GOPATH="$PROJECTS/gocode"
 
 # Clang
-export CC=clang
-export CXX=clang++
+export CC=gcc
+export CXX=g++
 
 # Golang
 if [ -d "/usr/local/go/bin" ]; then
