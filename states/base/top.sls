@@ -4,5 +4,5 @@ base:
     - git
     - golang
     - python
-    - nvm
+    - vim
     - zsh
