@@ -20,7 +20,7 @@ fi
 export PATH=$HOME/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="/home/gegen07/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 DISABLE_LS_COLORS="true"
 plugins=(
