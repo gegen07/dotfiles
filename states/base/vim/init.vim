@@ -38,6 +38,9 @@ if dein#load_state('{{ grains.homedir }}/.dein')
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('scrooloose/nerdtree')
   call dein#add('w0rp/ale')
+  call dein#add('valloric/youcompleteme')
+  call dein#add('junegunn/fzf')
+  call dein#add('terryma/vim-multiple-cursors')
 
   " UI
   call dein#add('mhinz/vim-startify')
