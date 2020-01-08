@@ -6,7 +6,7 @@ export PROJECTS="$HOME/dev/projects"
 # Go env
 export PATH="$PATH:$PROJECTS/gocode/bin"
 export GOPATH="$PROJECTS/gocode"
-
+export GOBIN=$GOPATH/bin
 # Clang
 export CC=gcc
 export CXX=g++

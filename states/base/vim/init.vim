@@ -20,6 +20,7 @@ set encoding=utf-8
 set noswapfile
 set nobackup
 set nowb
+set number
 
 " Shortcuts
 
@@ -41,6 +42,7 @@ if dein#load_state('{{ grains.homedir }}/.dein')
   call dein#add('valloric/youcompleteme')
   call dein#add('junegunn/fzf')
   call dein#add('terryma/vim-multiple-cursors')
+  call dein#add('fatih/vim-go')
 
   " UI
   call dein#add('mhinz/vim-startify')
@@ -87,6 +89,22 @@ syntax enable
 color dracula
 
 let g:airline_powerline_fonts = 1
+let g:deoplete#enable_at_startup = 1
+
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+
+let g:go_bin_path = $GOPATH."/bin"
+
+
+call deoplete#custom#option('omni_patterns', {
+\ 'go': '[^. *\t]\.\w*',
+\})
 
 " NERDTree
-map <C-n> :NERDTreeToggle<CR> "opens NertTree with Ctrl-n
+map <F2> :NERDTreeToggle<CR> "opens NertTree with Ctrl-n
