@@ -27,7 +27,7 @@ fi
 
 SSHKEY=id_rsa
 
-$SUDO salt-call --local --config=./ --state-output=changes grains.setvals "{ \"user\": \"$USERNAME\", \"homedir\": \"$HOMEDIR\", \"stateroot\": \"$DIR/states\", \"sshkey\": \"$HOMEDIR/.ssh/$SSHKEY_NAME\" }"
+$SUDO salt-call --local --config=./ --state-output=changes grains.setvals "{ \"user\": \"$USERNAME\", \"homedir\": \"$HOMEDIR\", \"stateroot\": \"$DIR/states\", \"sshkey\": \"$HOMEDIR/.ssh/$SSHKEY_NAME\", \"oscodename\": \"$(lsb_release -cs)\" }"
 
 if [[ ! $1 ]]; then
 	echo "Setting Up all dependencies"
