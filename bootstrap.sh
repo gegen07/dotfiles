@@ -22,12 +22,11 @@ if [ $? -ne 0 ]; then
 	deb http://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest bionic main
 	sudo apt-get update
 	sudo apt-get install salt-minion -y
-	#wget -qO- https://bootstrap.saltstack.com | $USE_SUDO sh -s -- -P -d git v2018.11
 fi
 
 SSHKEY=id_rsa
 
-$SUDO salt-call --local --config=./ --state-output=changes grains.setvals "{ \"user\": \"$USERNAME\", \"homedir\": \"$HOMEDIR\", \"stateroot\": \"$DIR/states\", \"sshkey\": \"$HOMEDIR/.ssh/$SSHKEY_NAME\", \"oscodename\": \"$(lsb_release -cs)\" }"
+$SUDO salt-call --local --config=./ --state-output=changes grains.setvals 	"{ \"user\": \"$USERNAME\", \"homedir\": \"$HOMEDIR\", \"stateroot\": \"$DIR/states\", \"sshkey\": \"$HOMEDIR/.ssh/$SSHKEY_NAME\", \"oscodename\": \"$(lsb_release -cs)\" }"
 
 if [[ ! $1 ]]; then
 	echo "Setting Up all dependencies"

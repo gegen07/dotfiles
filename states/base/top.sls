@@ -9,6 +9,7 @@ base:
     - golang
     - python
     - spotify
+    - thunderbird
     - vim
     - vscode
     - wireshark

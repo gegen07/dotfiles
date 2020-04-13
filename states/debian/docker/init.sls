@@ -13,3 +13,10 @@ docker.packages:
       - docker-ce
       - docker-ce-cli
       - containerd.io
+
+docker-group:
+  group.present:
+    - group: docker
+    - system: True
+    - addusers:
+      - {{ grains.user }}
