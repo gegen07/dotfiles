@@ -10,5 +10,6 @@ base:
     - python
     - spotify
     - vim
+    - vscode
     - wireshark
     - zsh
