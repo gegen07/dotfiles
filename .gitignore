@@ -1,2 +1,5 @@
 # SaltStack
 grains
+
+# files and directory
+*.zip

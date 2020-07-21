@@ -4,7 +4,6 @@ base:
     - dev-tools
     - discord
     - docker
-    - fonts
     - git
     - golang
     - python
