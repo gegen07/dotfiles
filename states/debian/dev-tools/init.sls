@@ -15,6 +15,7 @@ dev-tools-installer:
       - make
       - tar
       - software-properties-common 
+      - ubuntu-restricted-extras
       - wget
       - valgrind
       - zip

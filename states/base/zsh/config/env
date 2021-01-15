@@ -18,19 +18,6 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$PATH
-# Path to your oh-my-zsh installation.
-export ZSH="/home/gegen07/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
-
-DISABLE_LS_COLORS="true"
-plugins=(
-  docker
-  git
-  go
-  golang
-)
-
-source $ZSH/oh-my-zsh.sh
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/id_rsa"
