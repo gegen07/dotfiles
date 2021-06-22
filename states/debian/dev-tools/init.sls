@@ -12,6 +12,7 @@ dev-tools-installer:
       - gnupg-agent 
       - htop
       - httpie
+      - libspatialindex-dev
       - make
       - tar
       - software-properties-common 
