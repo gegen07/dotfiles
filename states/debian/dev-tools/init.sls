@@ -14,6 +14,9 @@ dev-tools-installer:
       - httpie
       - libspatialindex-dev
       - make
+      - network-manager-openvpn
+      - network-manager-openvpn-gnome
+      - openvpn
       - tar
       - software-properties-common 
       - ubuntu-restricted-extras
