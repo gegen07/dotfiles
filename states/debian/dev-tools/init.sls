@@ -19,5 +19,6 @@ dev-tools-installer:
       - ubuntu-restricted-extras
       - wget
       - valgrind
+      - vim
       - zip
       - xclip

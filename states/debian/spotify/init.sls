@@ -3,7 +3,7 @@ spotify-ppa:
    - humanname: Spotify
    - name: deb http://repository.spotify.com stable non-free
    - file: /etc/apt/sources.list.d/spotify.list
-   - key_url: https://download.spotify.com/debian/pubkey_0D811D58.gpg
+   - key_url: https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg
 
 spotify-install:
   pkg.latest:

@@ -17,7 +17,7 @@ docker.packages:
 
 docker-group:
   group.present:
-    - group: docker
+    - name: docker
     - system: True
     - addusers:
       - {{ grains.user }}

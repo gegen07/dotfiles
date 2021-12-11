@@ -24,8 +24,9 @@ fi
 which salt-call > /dev/null 2>&1
 if [ $? -ne 0 ]; then
 	echo "SaltStack not installed. Installing..."
-	wget -O - https://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest/SALTSTACK-GPG-KEY.pub | sudo apt-key add -
-	deb http://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest bionic main
+	
+	sudo curl -fsSL -o /usr/share/keyrings/salt-archive-keyring.gpg https://repo.saltproject.io/py3/ubuntu/20.04/amd64/3004/salt-archive-keyring.gpg | sudo apt-key add -
+	echo "deb [signed-by=/usr/share/keyrings/salt-archive-keyring.gpg arch=amd64] https://repo.saltproject.io/py3/ubuntu/20.04/amd64/3004 focal main" | sudo tee /etc/apt/sources.list.d/salt.list
 	sudo apt-get update
 	sudo apt-get install salt-minion -y
 fi
@@ -33,18 +34,6 @@ fi
 SSHKEY=id_rsa
 
 $SUDO salt-call --local --config=./ --state-output=changes grains.setvals 	"{ \"user\": \"$USERNAME\", \"homedir\": \"$HOMEDIR\", \"stateroot\": \"$DIR/states\", \"sshkey\": \"$HOMEDIR/.ssh/$SSHKEY_NAME\", \"oscodename\": \"$(lsb_release -cs)\" }"
-
-function download_fonts {
-	echo "Installing FiraCode and Fira Code NerdFonts"
-	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
-	unzip Meslo.zip -d ~/.local/share/fonts
-
-	wget https://github.com/tonsky/FiraCode/releases/download/5.2/Fira_Code_v5.2.zip
-	unzip Fira_Code_v5.2.zip -d ~/.local/share/fonts
-
-	fc-cache -fv
-	echo "Done!"
-}
 
 if [[ ! $1 ]]; then
 	echo "Setting Up all dependencies"
@@ -55,7 +44,16 @@ if [[ ! $1 ]]; then
 		--retcode-passthrough state.highstate
 else
 	if [[ $1 == 'fonts' ]]; then
-		download_fonts
+		echo "Installing FiraCode and Fira Code NerdFonts"
+		
+		wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
+		unzip Meslo.zip -d ~/.local/share/fonts
+		
+		wget https://github.com/tonsky/FiraCode/releases/download/5.2/Fira_Code_v5.2.zip
+		unzip Fira_Code_v5.2.zip -d ~/.local/share/fonts
+		
+		fc-cache -fv
+		echo "Done!"
 	else
 		echo "Update $1"
 		$SUDO salt-call \
