@@ -12,11 +12,13 @@ dev-tools-installer:
       - gnupg-agent 
       - htop
       - httpie
+      - jq
       - libspatialindex-dev
       - make
       - network-manager-openvpn
       - network-manager-openvpn-gnome
       - openvpn
+      - peco
       - tar
       - software-properties-common 
       - ubuntu-restricted-extras

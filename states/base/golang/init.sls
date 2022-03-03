@@ -1,4 +1,4 @@
-{% set golang_version = 'go1.15.6' %}
+{% set golang_version = 'go1.17.7' %}
 {% set golang_distribution = 'linux' %}
 
 include:

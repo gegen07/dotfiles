@@ -7,18 +7,24 @@ fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-#__conda_setup="$('/home/gegen07/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-#if [ $? -eq 0 ]; then
-#    eval "$__conda_setup"
-#else
-if [ -f "/home/gegen07/anaconda3/etc/profile.d/conda.sh" ]; then
-    . "/home/gegen07/anaconda3/etc/profile.d/conda.sh"
+__conda_setup="$('/home/gegen07/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
 else
-    export PATH="/home/gegen07/anaconda3/bin:$PATH"
+    if [ -f "/home/gegen07/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/gegen07/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/gegen07/anaconda3/bin:$PATH"
+    fi
 fi
-#fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+export HISTSIZE=100000
+export HISTFILE="$HOME/.history"
+export SAVEHIST=$HISTSIZE
+setopt EXTENDED_HISTORY
+setopt INC_APPEND_HISTORY
 
 # zplug
 
@@ -32,8 +38,7 @@ zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tm
 
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-zplug "b4b4r07/emoji-cli", \
-    on:"stedolan/jq"
+zplug "b4b4r07/emoji-cli"
 
 zplug 'zsh-users/zsh-autosuggestions'                                               
 
@@ -45,6 +50,10 @@ if ! zplug check --verbose; then
     fi                                                                                 
 fi
 zplug load
+
+source ~/.zplug/repos/junegunn/fzf/shell/key-bindings.zsh
+source ~/.zplug/repos/junegunn/fzf/shell/completion.zsh
+source ~/.zplug/repos/b4b4r07/emoji-cli/emoji-cli.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
