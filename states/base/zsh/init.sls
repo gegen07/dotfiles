@@ -1,3 +1,5 @@
+{% set account_group = grains.get('group', grains.user) %}
+
 zsh-install:
   pkg.installed:
     - name: zsh
@@ -10,21 +12,33 @@ zsh-zplug-install:
     - rev: master
     - force_reset: True
     - user: {{ grains.user }}
+
 zsh-config-aliases:
   file.symlink:
     - name: {{ grains.homedir }}/.zaliases
     - target: {{ grains.stateroot }}/base/zsh/config/aliases
     - user: {{ grains.user }}
     - force: True
+
 zsh-config-rc:
   file.symlink:
     - name: {{ grains.homedir }}/.zshrc
     - target: {{ grains.stateroot }}/base/zsh/config/rc
     - user: {{ grains.user }}
     - force: True
+
 zsh-config-env:
   file.symlink:
     - name: {{ grains.homedir }}/.zshenv
     - target: {{ grains.stateroot }}/base/zsh/config/env
     - user: {{ grains.user }}
     - force: True
+
+zsh-config-local:
+  file.managed:
+    - name: {{ grains.homedir }}/.zshrc.local
+    - source: salt://zsh/config/rc.local.example
+    - user: {{ grains.user }}
+    - group: {{ account_group }}
+    - mode: 644
+    - replace: False

@@ -5,55 +5,55 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/gegen07/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/gegen07/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/gegen07/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/gegen07/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 export HISTSIZE=100000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_FIND_NO_DUPS
 
-# zplug
+[[ -f ~/.zaliases ]] && source ~/.zaliases
 
-if ! [ type "zplug" > /dev/null 2>&1 ]; then                                      
-    source ~/.zplug/init.zsh    
-    source ~/.zaliases
-fi        
-                                                                                      
-zplug "romkatv/powerlevel10k", as:theme, depth:1
-zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tmux,fzf}"
+if [[ -f ~/.zplug/init.zsh ]]; then
+  source ~/.zplug/init.zsh
 
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+  zplug "romkatv/powerlevel10k", as:theme, depth:1
+  zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tmux,fzf}"
+  zplug "zsh-users/zsh-syntax-highlighting", defer:2
+  zplug "b4b4r07/emoji-cli"
+  zplug "zsh-users/zsh-autosuggestions"
 
-zplug "b4b4r07/emoji-cli"
+  if [[ -o interactive ]] && ! zplug check; then
+    printf "Install zplug plugins? [y/N]: "
+    if read -q; then
+      echo
+      zplug install
+    else
+      echo
+    fi
+  fi
+  zplug load
 
-zplug 'zsh-users/zsh-autosuggestions'                                               
-
-# Install plugins if there are plugins that have not been installed                  
-if ! zplug check --verbose; then                                                               
-    printf "Install? [y/N]: "                                                          
-    if read -q; then                                                                   
-        echo; zplug install                                                             
-    fi                                                                                 
+  [[ -f ~/.zplug/repos/junegunn/fzf/shell/key-bindings.zsh ]] && source ~/.zplug/repos/junegunn/fzf/shell/key-bindings.zsh
+  [[ -f ~/.zplug/repos/junegunn/fzf/shell/completion.zsh ]] && source ~/.zplug/repos/junegunn/fzf/shell/completion.zsh
+  [[ -f ~/.zplug/repos/b4b4r07/emoji-cli/emoji-cli.zsh ]] && source ~/.zplug/repos/b4b4r07/emoji-cli/emoji-cli.zsh
 fi
-zplug load
-
-source ~/.zplug/repos/junegunn/fzf/shell/key-bindings.zsh
-source ~/.zplug/repos/junegunn/fzf/shell/completion.zsh
-source ~/.zplug/repos/b4b4r07/emoji-cli/emoji-cli.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+if [[ -x "$HOME/.local/bin/micromamba" ]]; then
+  export MAMBA_EXE="$HOME/.local/bin/micromamba"
+  export MAMBA_ROOT_PREFIX="$HOME/micromamba"
+  __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+  if [[ $? -eq 0 ]]; then
+    eval "$__mamba_setup"
+  else
+    alias micromamba="$MAMBA_EXE"
+  fi
+  unset __mamba_setup
+fi
+
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

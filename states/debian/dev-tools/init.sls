@@ -1,29 +1,27 @@
 dev-tools-installer:
   pkg.installed:
-    - pkgs:   
-      - apt-transport-https 
-      - ca-certificates         
+    - pkgs:
+      - apt-transport-https
       - binutils
       - build-essential
+      - ca-certificates
+      - clang
       - cmake
+      - coinor-cbc
       - coreutils
       - curl
       - gdb
-      - gnupg-agent 
+      - gnupg-agent
       - htop
       - httpie
       - jq
       - libspatialindex-dev
       - make
-      - network-manager-openvpn
-      - network-manager-openvpn-gnome
-      - openvpn
       - peco
+      - software-properties-common
       - tar
-      - software-properties-common 
-      - ubuntu-restricted-extras
-      - wget
       - valgrind
       - vim
-      - zip
+      - wget
       - xclip
+      - zip

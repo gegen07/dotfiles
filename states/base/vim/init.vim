@@ -36,33 +36,31 @@ if dein#load_state('{{ grains.homedir }}/.dein')
   call dein#add('{{ grains.homedir }}/.dein/repos/github.com/Shougo/dein.vim')
 
   " Tools
-  call dein#add('Shougo/deoplete.nvim')
-  call dein#add('scrooloose/nerdtree')
-  call dein#add('w0rp/ale')
-  call dein#add('valloric/youcompleteme')
-  call dein#add('junegunn/fzf')
-  call dein#add('terryma/vim-multiple-cursors')
-  call dein#add('fatih/vim-go')
+  call dein#add('Shougo/deoplete.nvim', {'rev': '6.1'})
+  call dein#add('preservim/nerdtree', {'rev': '7.1.3'})
+  call dein#add('dense-analysis/ale', {'rev': 'v4.0.0'})
+  call dein#add('junegunn/fzf', {'rev': 'v0.74.5'})
+  call dein#add('fatih/vim-go', {'rev': 'v1.29'})
 
   " UI
-  call dein#add('mhinz/vim-startify')
-  call dein#add('vim-airline/vim-airline')
-  call dein#add('vim-airline/vim-airline-themes')
-  call dein#add('junegunn/goyo.vim')
-  call dein#add('junegunn/limelight.vim')
+  call dein#add('mhinz/vim-startify', {'rev': 'v1.1'})
+  call dein#add('vim-airline/vim-airline', {'rev': 'v0.12'})
+  call dein#add('vim-airline/vim-airline-themes', {'rev': '77aab8c6cf7179ddb8a05741da7e358a86b2c3ab'})
+  call dein#add('junegunn/goyo.vim', {'rev': '1.6.0'})
+  call dein#add('junegunn/limelight.vim', {'rev': '617064e84e896f6f36b5e559f8e6486d632f68ed'})
 
   " Git
-  call dein#add('airblade/vim-gitgutter')
-  call dein#add('tpope/vim-fugitive')
+  call dein#add('airblade/vim-gitgutter', {'rev': '90b75207bd9b55d8ac4af15f72b4e935462014d0'})
+  call dein#add('tpope/vim-fugitive', {'rev': 'v3.7'})
 
   "Dracula Theme
-  call dein#add('dracula/vim')
+  call dein#add('dracula/vim', {'rev': 'v2.0.0'})
 
   " Language syntax
-  call dein#add('sheerun/vim-polyglot')
+  call dein#add('sheerun/vim-polyglot', {'rev': 'v4.17.1'})
 
   " needs to be loaded after most plugins
-  call dein#add('ryanoasis/vim-devicons')
+  call dein#add('ryanoasis/vim-devicons', {'rev': 'v0.11.0'})
 
   " Required:
   call dein#end()

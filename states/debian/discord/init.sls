@@ -1,4 +1,4 @@
 discord-installer:
   pkg.installed:
-    - sources: 
-      - discord: https://discordapp.com/api/download?platform=linux&format=deb
+    - sources:
+      - discord: "https://discord.com/api/download?platform=linux&format=deb"

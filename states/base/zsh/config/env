@@ -1,5 +1,5 @@
 # bin
-export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$HOME/.local/bin:$PATH"
 
 # Dev
 export PROJECTS="$HOME/dev/projects"
@@ -16,8 +16,12 @@ if [ -d "/usr/local/go/bin" ]; then
   export PATH=$PATH:/usr/local/go/bin
 fi
 
+if [ -f "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$PATH
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/id_rsa"
+export SSH_KEY_PATH="$HOME/.ssh/id_rsa"

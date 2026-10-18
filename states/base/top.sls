@@ -1,15 +1,20 @@
 base:
-  '*':
-    - chrome
-    - dev-tools
-    - discord
-    - docker
+  'roles:core':
+    - match: grain
     - git
+    - vim
+    - zsh
+  'roles:dev':
+    - match: grain
+    - dev-tools
+    - docker
     - golang
     - python
-    - spotify
-    - thunderbird
-    - vim
+    - rust
     - vscode
-    - wireshark
-    - zsh
+  'roles:desktop':
+    - match: grain
+    - chrome
+    - discord
+    - spotify
+    - workstation
